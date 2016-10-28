@@ -29,11 +29,11 @@ public class BudgetAccount implements Serializable{
     private String accountDesc;
     
     @OneToMany (targetEntity = Deposits.class, mappedBy = "account")
-    @Column (name="ACCOUNT_DEPOSIT") // defines the name of the database column
+    @Column (name="AccountDeposit") // defines the name of the database column
     private Collection<Deposits> accountDeposits = new ArrayList<>();
     
     @OneToMany (targetEntity = Expenses.class, mappedBy = "account")
-    @Column (name="ACCOUNT_EXPENSE") // defines the name of the database column
+    @Column (name="AccountExpense") // defines the name of the database column
     private Collection<Expenses> accountExpenses = new ArrayList<>();
     
     @Column (name="AccountBalance") // defines the name of the database column
