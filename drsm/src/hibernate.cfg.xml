@@ -35,6 +35,8 @@
     <!-- Mention here all the model classes along with their package name -->
  
     <mapping class="model.BudgetAccount"/>
+    <mapping class="model.Deposits"/>
+    <mapping class="model.Expenses"/>
       
     </session-factory>
 </hibernate-configuration>
