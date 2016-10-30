@@ -4,16 +4,17 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
 @Entity
+@NamedQuery(name="BudgetAccount.byName", query="from BudgetAccount where accountName = ?")
 @Table (name="Accounts")   // defines the name of the database table
 public class BudgetAccount implements Serializable{
     
