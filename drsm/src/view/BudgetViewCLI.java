@@ -18,11 +18,11 @@ public class BudgetViewCLI {
 
     //account 0-Name 1-Budget ammount 2-balance 3-is rollover account 4-all transactions
     public void accountView(String[][] accounts) {
-        System.out.println("ACCT# |     Account Name     | Account Budget | Account Balance | Is Rollover");
-        System.out.println("------|----------------------|----------------|-----------------|------------");
+        System.out.println("ACCT# |     Account Name     | Account Budget | Account Balance");// | Is Rollover");
+        System.out.println("------|----------------------|----------------|-----------------");//|------------");
         for (int i = 0; i < accounts.length; i++) {
             // 5          20                      15                       15                       5
-            //Account #  Account name          Account budget          account balance          is rollover
+            //                Account #  Account name          Account budget          account balance          is rollover
             //System.out.print(i + " " + accounts[i][0] + " " + accounts[i][1] + " " + accounts[i][2]+ " "+ " "+accounts[i][3]); //);
             //Account #
             if (i < 10) {
@@ -32,41 +32,42 @@ public class BudgetViewCLI {
             }
             //Account name
             if (accounts[i][0].length() < 20) {
-                System.out.print(accounts[i][0]);
+                System.out.print(accounts[i][1]);
                 for (int l = accounts[i][0].length(); l < 20; l++) {
                     System.out.print(" ");
                 }
             } else {
                 for (int l = 0; l < 20; l++) {
-                    System.out.print(accounts[i][0].charAt(l));
-                }
-            }
-            System.out.print(" | $");
-            //Account budget
-            if (accounts[i][1].length() < 13) {
-                System.out.print(accounts[i][1]);
-                for (int l = accounts[i][1].length(); l < 13; l++) {
-                    System.out.print(" ");
-                }
-            } else {
-                for (int l = 0; l < 13; l++) {
                     System.out.print(accounts[i][1].charAt(l));
                 }
             }
             System.out.print(" | $");
             //Account budget
+            if (accounts[i][1].length() < 13) {
+                System.out.print(accounts[i][4]);
+                for (int l = accounts[i][4].length(); l < 13; l++) {
+                    System.out.print(" ");
+                }
+            } else {
+                for (int l = 0; l < 13; l++) {
+                    System.out.print(accounts[i][4].charAt(l));
+                }
+            }
+            System.out.print(" | $");
+            //Account balance
             if (accounts[i][2].length() < 14) {
-                System.out.print(accounts[i][2]);
-                for (int l = accounts[i][2].length(); l < 14; l++) {
+                System.out.print(accounts[i][3]);
+                for (int l = accounts[i][3].length(); l < 14; l++) {
                     System.out.print(" ");
                 }
             } else {
                 for (int l = 0; l < 14; l++) {
-                    System.out.print(accounts[i][2].charAt(l));
+                    System.out.print(accounts[i][3].charAt(l));
                 }
             }
-            System.out.print(" | ");
+            System.out.print(" ");//| ");
             //is rollover
+            /*
             if (accounts[i][3].length() < 6) {
                 System.out.print(accounts[i][3]);
                 for (int l = accounts[i][3].length(); l < 6; l++) {
@@ -76,7 +77,7 @@ public class BudgetViewCLI {
                 for (int l = 0; l < 6; l++) {
                     System.out.print(accounts[i][3].charAt(l));
                 }
-            }
+            }*/
             System.out.println("");
         }
         System.out.println("");
@@ -93,15 +94,18 @@ public class BudgetViewCLI {
         String userIn = input.next();
         return userIn;
     }
-
+    public void notEdit(){
+        System.out.println("Option Not Editable");
+    }
     //account 0-Name 1-Budget ammount 2-balance 3-is rollover account 4-all transactions
     public void viewAccount(String[] account) {
-        System.out.println("1 Name: " + account[0]);
-        System.out.println("2 Budget: $" + account[1]);
-        System.out.println("3 Balance: $" + account[2]);
-        System.out.println("4 Rollover: " + account[3]);
-        System.out.println("5 Transactions");
-        System.out.println("6 none");
+        System.out.println("1 Name: " + account[1]);
+        System.out.println("2 Description: " + account[2]);
+        System.out.println("3 Budget: $" + account[3]);
+        System.out.println("4 Balance: $" + account[4]);
+        //System.out.println("5 Rollover: " + account[3]);
+        //System.out.println("6 Transactions");
+        System.out.println("5 none");
     }
 
     public String editAccount() {
@@ -120,7 +124,17 @@ public class BudgetViewCLI {
     }
 
     public String getBudget() {
-        System.out.print("Please entera new Account budget:");
+        System.out.print("Please enter a new Account budget: $");
+        return getUserInput();
+    }
+    
+    public String getDescription() {
+        System.out.print("Please enter a new Account Discription:");
+        return getUserInput();
+    }
+    
+    public String getBalance() {
+        System.out.print("Please enter a Starting Balance: $");
         return getUserInput();
     }
 
