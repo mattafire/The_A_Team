@@ -4,16 +4,17 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
 @Entity
+@NamedQuery(name="BudgetAccount.byName", query="from BudgetAccount where accountName = ?")
 @Table (name="Accounts")   // defines the name of the database table
 public class BudgetAccount implements Serializable{
     
@@ -29,11 +30,11 @@ public class BudgetAccount implements Serializable{
     private String accountDesc;
     
     @OneToMany (targetEntity = Deposits.class, mappedBy = "account")
-    @Column (name="ACCOUNT_DEPOSIT") // defines the name of the database column
+    @Column (name="AccountDeposit") // defines the name of the database column
     private Collection<Deposits> accountDeposits = new ArrayList<>();
     
     @OneToMany (targetEntity = Expenses.class, mappedBy = "account")
-    @Column (name="ACCOUNT_EXPENSE") // defines the name of the database column
+    @Column (name="AccountExpense") // defines the name of the database column
     private Collection<Expenses> accountExpenses = new ArrayList<>();
     
     @Column (name="AccountBalance") // defines the name of the database column
